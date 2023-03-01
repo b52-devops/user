@@ -245,19 +245,19 @@ redisClient.on('ready', (r) => {
 
 // set up Mongo : Use this when your mongo is on ec2 servers 
 function mongoConnect() {
-   return new Promise((resolve, reject) => {
-       var mongoURL = process.env.MONGO_URL || 'mongodb://mongodb:27017/users';
-       mongoClient.connect(mongoURL, (error, client) => {
-           if(error) {
-               reject(error);
-           } else {
-               db = client.db('users');
-               usersCollection = db.collection('users');
-               ordersCollection = db.collection('orders');
-               resolve('connected');
-           }
-       });
-   });
+    return new Promise((resolve, reject) => {
+        var mongoURL = process.env.MONGO_URL || 'mongodb://mongodb:27017/users';
+        mongoClient.connect(mongoURL, (error, client) => {
+            if(error) {
+                reject(error);
+            } else {
+                db = client.db('users');
+                usersCollection = db.collection('users');
+                ordersCollection = db.collection('orders');
+                resolve('connected');
+            }
+        });
+    });
 }
 
 // Use this code only when your MongodDB is on PaS Solution on AWS : Document DB
